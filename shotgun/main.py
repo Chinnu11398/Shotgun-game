@@ -109,9 +109,6 @@ class Player(pygame.sprite.Sprite):
 
     def border(self):
 
-        # make collision detection more reliable
-        #bullet_sprite.collision()
-
         if self.pos.x < -10:
             self.pos.x = 1250
         elif self.pos.x > 1300:
@@ -120,9 +117,6 @@ class Player(pygame.sprite.Sprite):
 
             self.point_list = [(self.pos.x, 0), (self.pos.x - 50, 50), (self.pos.x + 50, 50)]
             pygame.draw.polygon(screen, 'lightblue', self.point_list)
-
-
-        #bullet_sprite.collision()
 
     def game_over(self):
         if self.pos.y > 1100:
@@ -220,7 +214,6 @@ class Gun(pygame.sprite.Sprite):
 
     def update(self):
         self.aim()
-        #screen.blit(self.image, self.rect)
         
 
 gun_sprite = Gun(camera_group)
@@ -308,7 +301,6 @@ class Collecting_Bullets(pygame.sprite.Sprite):
                 self.kill()
                 gain_bullet.play()
                 self.is_dead = True
-                
 
     def move(self):
         pass
@@ -336,7 +328,6 @@ class Obstacles(Collecting_Bullets):
         super().__init__(groups)
         self.temp = pygame.image.load('graphs/help.png').convert_alpha()
         self.i = 0
-        #self.image = pygame.transform.rotozoom(self.temp, 0 , 0.4)
 
     def collision(self):
 
